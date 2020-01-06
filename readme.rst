@@ -1,6 +1,8 @@
 Jirafs csv_include Macro
 ================
 
+*NOTE: This is a work in progress!*
+
 Adds a macro used for including a CSV file as a Jira table::
 
   <jirafs:csv_include filename="my_file.csv" />
