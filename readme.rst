@@ -1,11 +1,9 @@
-Jirafs csv_include Macro
-================
-
-*NOTE: This is a work in progress!*
+Jirafs csv_table Macro
+======================
 
 Adds a macro used for including a CSV file as a Jira table::
 
-  <jirafs:csv_include filename="my_file.csv" />
+  <jirafs:csv-table filename="my_file.csv" />
 
 if you have a file named `my_file.csv` containing the content::
 
@@ -33,10 +31,11 @@ which, when rendered by JIRA, will look something like this:
 Parameters
 ----------
 
-* `filename`: Path to CSV file to include.
-* `delimiter`: CSV delimiter; defaults to ",".  You can use standard python
-  string escape sequences; so for using a tab as your file's field delimiter,
-  you can provide the value of "\t".
+* `filename`: Path to CSV file to include as a table.
+* `delimiter`: (Default: ",") Delimiter used for separating each column's
+  values.  You can use standard python string escape sequences; so for using
+  a tab as your file's field delimiter, you can provide the value of "\t".
+* `has_header`: (Default: True) If the first row of your CSV is not headers
 
 Requirements
 ------------
@@ -48,14 +47,14 @@ Installation
 
 1. Install from PIP::
 
-    pip install jirafs_csv_include
+    pip install jirafs_csv_table
 
 2. Enable for a ticket folder::
 
-    jirafs plugins --enable=csv_include
+    jirafs plugins --enable=csv_table
 
 Note that you can globally enable this (or any) plugin by adding the
 ``--global`` flag to the above command::
 
-    jirafs plugins --global --enable=csv_include
+    jirafs plugins --global --enable=csv_table
 

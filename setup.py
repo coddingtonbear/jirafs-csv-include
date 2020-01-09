@@ -2,7 +2,7 @@ import os
 from setuptools import setup, find_packages
 import uuid
 
-from jirafs_csv_include import __version__ as version_string
+from jirafs_csv_table import __version__ as version_string
 
 
 requirements_path = os.path.join(
@@ -28,9 +28,9 @@ except (ImportError, AttributeError, ValueError, TypeError):
 
 
 setup(
-    name='jirafs_csv_include',
+    name='jirafs_csv_table',
     version=version_string,
-    url='https://github.com/coddingtonbear/jirafs-csv-include',
+    url='https://github.com/coddingtonbear/jirafs-csv-table',
     description="Include tables in your Jira comments or description using a local CSV file.",
     author='Adam Coddington',
     author_email='me@adamcoddington.net',
@@ -44,7 +44,7 @@ setup(
     packages=find_packages(),
     entry_points={
         'jirafs_plugins': [
-            'csv_include = jirafs_csv_include.plugin:Plugin',
+            'csv_table = jirafs_csv_table.plugin:Plugin',
         ]
     },
 )
