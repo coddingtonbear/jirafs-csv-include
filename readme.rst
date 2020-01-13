@@ -3,7 +3,7 @@ Jirafs csv_table Macro
 
 Adds a macro used for including a CSV file as a Jira table::
 
-  <jirafs:csv-table filename="my_file.csv" />
+  <jirafs:csv-table src="my_file.csv" />
 
 if you have a file named `my_file.csv` containing the content::
 
@@ -31,7 +31,7 @@ which, when rendered by JIRA, will look something like this:
 Parameters
 ----------
 
-* `filename`: Path to CSV file to include as a table.
+* `src`: Path to CSV file to include as a table.
 * `delimiter`: (Default: ",") Delimiter used for separating each column's
   values.  You can use standard python string escape sequences; so for using
   a tab as your file's field delimiter, you can provide the value of "\t".

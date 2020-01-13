@@ -1,28 +1,25 @@
 import csv
+import io
 
 from jirafs.exceptions import MacroContentError
-from jirafs.plugin import (
-    VoidElementMacroPlugin,
-)
+from jirafs.plugin import AutomaticReversalMacroPlugin
 
 
-class Plugin(VoidElementMacroPlugin):
+class Plugin(AutomaticReversalMacroPlugin):
     MIN_VERSION = '2.0.0'
     MAX_VERSION = '3.0.0'
-    COMPONENT_NAME = 'csv-table'
+    TAG_NAME = 'csv-table'
 
     def execute_macro(
         self,
         data,
-        filename="",
-        delimiter=",",
-        has_header=True,
+        attrs,
+        config,
         **kwargs
     ):
-        if not filename:
-            raise MacroContentError(
-                "'filename' attribute is required."
-            )
+        delimiter = attrs.get('delimiter', ',')
+        has_header = attrs.get('has_header', True)
+
         if len(delimiter) != 1:
             raise MacroContentError(
                 "'delimiter' attribute must be a one-character string."
@@ -31,22 +28,23 @@ class Plugin(VoidElementMacroPlugin):
         lines = []
 
         header_printed = False
-        with open(filename, 'r') as inf:
-            reader = csv.reader(inf, delimiter=delimiter)
-            for row in reader:
-                if not row:
-                    continue
 
-                column_separator = "|"
+        inf = io.StringIO(data)
+        reader = csv.reader(inf, delimiter=delimiter)
+        for row in reader:
+            if not row:
+                continue
 
-                if has_header and not header_printed:
-                    column_separator = "||"
-                    header_printed = True
+            column_separator = "|"
 
-                lines.append(
-                    column_separator
-                    + column_separator.join(row)
-                    + column_separator
-                )
+            if has_header and not header_printed:
+                column_separator = "||"
+                header_printed = True
+
+            lines.append(
+                column_separator
+                + column_separator.join(row)
+                + column_separator
+            )
 
         return '\n'.join(lines)
