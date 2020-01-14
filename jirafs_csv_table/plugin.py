@@ -35,6 +35,9 @@ class Plugin(AutomaticReversalMacroPlugin):
             if not row:
                 continue
 
+            # Make sure that each cell has at least a space
+            row = [cell or ' ' for cell in row]
+
             column_separator = "|"
 
             if has_header and not header_printed:
