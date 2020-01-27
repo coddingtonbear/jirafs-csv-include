@@ -3,7 +3,7 @@ Jirafs csv-table Macro
 
 This Jirafs plugin adds a macro allowing you to create tables in your Jira issues by rendering them from a CSV file.
 
-.. image:: http://coddingtonbear-public.s3.amazonaws.com/github/jirafs-csv-table/demo_v2.gif
+.. image:: http://coddingtonbear-public.s3.amazonaws.com/github/jirafs-csv-table/demo_v3.gif
 
 and the comment posted will appear in Jira as:
 
