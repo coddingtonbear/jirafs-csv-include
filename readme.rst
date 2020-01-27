@@ -1,32 +1,21 @@
-Jirafs csv_table Macro
+Jirafs csv-table Macro
 ======================
 
-Adds a macro used for including a CSV file as a Jira table::
+This Jirafs plugin adds a macro allowing you to create tables in your Jira issues by rendering them from a CSV file.
 
-  <jirafs:csv-table src="my_file.csv" />
+.. image:: http://coddingtonbear-public.s3.amazonaws.com/github/jirafs-csv-table/demo_v1.gif
 
-if you have a file named `my_file.csv` containing the content::
+and the comment posted will appear in Jira as:
 
-  ,Canada,United States of America,Mexico, Guatemala
-  Capital,"Ottawa, Ontario","Washington, DC","Mexico City, DF","Guatemala City"
-  Population (millions),35.16,318.9,122.3,15.47
+.. image:: http://coddingtonbear-public.s3.amazonaws.com/github/jirafs-csv-table/jirafs-csv-table-rendered.png
 
-will be automatically transformed into JIRA's special markup::
+Quickstart
+----------
 
-  || ||Canada||United States of America||Mexico||Guatemala||
-  |Capital|Ottawa, Ontario|Washington, DC|Mexico City, DF|Guatemala City|
-  |Population (millions)|35.16|318.9|122.3|15.47|
+1. Create your CSV file.
+2. Use the macro, setting the 'src' field to the path to your CSV file::
 
-which, when rendered by JIRA, will look something like this:
-
-+------------+-----------------+--------------------------+-----------------+----------------+
-|            | Canada          | United States of America | Mexico          | Guatemala      |
-+============+=================+==========================+=================+================+
-| Capital    | Ottawa, Ontario | Washington, DC           | Mexico City, DF | Guatemala City |
-+------------+-----------------+--------------------------+-----------------+----------------+
-| Population | 35.16           | 318.9                    | 122.3           | 15.47          |
-| (millions) |                 |                          |                 |                |
-+------------+-----------------+--------------------------+-----------------+----------------+
+   <jirafs:csv-table src="my_csv_file.csv" />
 
 Parameters
 ----------
@@ -35,7 +24,8 @@ Parameters
 * `delimiter`: (Default: ",") Delimiter used for separating each column's
   values.  You can use standard python string escape sequences; so for using
   a tab as your file's field delimiter, you can provide the value of "\t".
-* `has_header`: (Default: True) If the first row of your CSV is not headers
+* `has_header`: (Default: True) If the first row of your CSV file is not a
+  header, set this to False.
 
 Requirements
 ------------
