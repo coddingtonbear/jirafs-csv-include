@@ -7,7 +7,7 @@ This Jirafs plugin adds a macro allowing you to create tables in your Jira issue
 
 and the comment posted will appear in Jira as:
 
-.. image:: http://coddingtonbear-public.s3.amazonaws.com/github/jirafs-csv-table/jirafs-csv-table-rendered.png
+.. image:: http://coddingtonbear-public.s3.amazonaws.com/github/jirafs-csv-table/demo_v1_jira.png
 
 Quickstart
 ----------
